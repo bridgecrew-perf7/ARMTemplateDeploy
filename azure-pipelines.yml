@@ -1,19 +1,13 @@
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure Pass - Sponsorship (47bfb371-2f3f-4972-a903-e9dadd96af7b)'
+    subscriptionId: '47bfb371-2f3f-4972-a903-e9dadd96af7b'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'JacobRG'
+    location: 'UK South'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://dev.azure.com/millionlightssj/Jacob-Project/_git/ARMTemplateDeploy?path=%2FStorageAccountTemplate.json'
+    deploymentMode: 'Incremental'
 
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
